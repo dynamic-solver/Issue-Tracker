@@ -22,5 +22,5 @@ A nodejs+ Expressjs Application to track the bug in Project.
 ### Method 1 :
 git clone https://github.com/dynamic-solver/Issue-Tracker.git
 
-or
+### Method 2 :
 Download ZIP file and run npm i
