@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="form.css" />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0px;
+        background-color: rgb(233, 218, 221);
+      }
+
+      form {
+        /* border: 2px solid red; */
+        width: 800px;
+        margin: auto;
+        background-color: lightgray;
+        padding: 10px;
+        font-size: large;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-weight: 600;
+      }
+      form > div {
+        margin: 10px auto;
+        width: 700px;
+      }
+
+      h1 {
+        text-align: center;
+        font-weight: 900;
+        margin-bottom: 30px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="number"],
+      textarea,
+      select,
+      input[type="password"] {
+        box-sizing: border-box;
+        width: 80%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        font-weight: 500;
+      }
+
+      input[type="submit"] {
+        width: 180px;
+        padding: 10px 8px;
+        border-radius: 20px;
+        border: none;
+        font-size: large;
+        font-weight: 700;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        display: block;
+        margin: 20px auto;
+
+        background-color: crimson;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: rgb(234, 68, 68);
+        color: rgb(15, 14, 14);
+      }
+
+      .right {
+        display: flex;
+      }
+    </style>
+
+    <title>Create Issue</title>
+  </head>
+  <body>
+    <%- include('header') %>
+    <h1>Create New Issue</h1>
+
+    <form method="post" action="/projects/<%= project.id %>/create-issue">
+      <div>
+        <label for="title" class="right">Title:</label>
+        <input type="text" id="title" name="title" />
+      </div>
+      <br />
+
+      <div>
+        <label for="description" class="right">Description:</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+      <br />
+
+      <div>
+        <label for="labels" class="right">Labels:</label>
+        <input type="text" id="labels" name="labels" />
+      </div>
+      <br />
+
+      <div>
+        <label for="author" class="right">Author:</label>
+        <input type="text" id="author" name="author" />
+      </div>
+      <br />
+
+      <input type="submit" value="Create" />
+    </form>
+  </body>
+</html>

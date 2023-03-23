@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="home.css" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <%- include('header') %>
+    <div class="flex-container">
+      <h1>List of Projects</h1>
+    </div>
+    <div class="row">
+      <ul class="flex-container">
+        <% projects.forEach(function(project) { %>
+        <li class="flex-item">
+          <a href="/projects/<%= project.id %>"><%= project.name %></a>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+    <div class="flex-container">
+      <a class="flex-item home-btn" href="/create-project"
+        >Report New Issue/Bug</a
+      >
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="form.css" />
+
+    <title>Create Project</title>
+  </head>
+  <body>
+    <%- include('header') %>
+    <h1>Create New Project</h1>
+    <form method="post" action="/create-project">
+      <div>
+        <label for="name" class="right">Name:</label>
+        <input type="text" id="name" name="name" />
+      </div>
+      <br />
+
+      <div>
+        <label for="description" class="right">Description:</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+      <br />
+
+      <div>
+        <label for="author" class="right">Author:</label>
+        <input type="text" id="author" name="author" />
+      </div>
+      <br />
+
+      <input type="submit" value="Create" />
+    </form>
+  </body>
+</html>

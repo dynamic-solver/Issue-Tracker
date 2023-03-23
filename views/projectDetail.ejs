@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <style>
+      div > h1 {
+        color: crimson;
+        font-size: 2vmax;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      div > h2 {
+        color: crimson;
+        font-size: 1.5vmax;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      div > h1 > span {
+        color: rgba(0, 0, 0, 0.751);
+        font-size: 2vmax;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+
+      div > h2 > span {
+        color: rgba(0, 0, 0, 0.751);
+        font-size: 1.5vmax;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      /* issue */
+      .bug-heading {
+        color: crimson;
+        text-decoration: underline;
+        font-size: 2vmax;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+
+      #labels {
+        display: none;
+      }
+
+      .flex-container {
+        flex-direction: column;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid red;
+        background-color: lightgray;
+      }
+
+      .flex-item {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .f-btn {
+        color: white;
+        text-decoration: none;
+        width: 180px;
+        padding: 10px 8px;
+        border-radius: 20px;
+        border: none;
+        font-size: large;
+        font-weight: 700;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        display: block;
+        margin: 20px auto;
+        color: white;
+        cursor: pointer;
+        background-color: purple;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .lst-li {
+        text-decoration: none;
+        color: black;
+        font-size: x-large;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-weight: 800;
+      }
+      ul > li > h3 {
+        text-decoration: none;
+      }
+
+      #mt-top {
+        margin-top: 20px;
+      }
+    </style>
+
+    <title>Project Detail</title>
+  </head>
+  <body>
+    <%- include('header') %>
+    <div class="flex-container">
+      <h1 class="flex-item">
+        Project Name: <span><%= locals.project.name %></span>
+      </h1>
+      <h2 class="flex-item">
+        Project Desc. : <span><%= locals.project.description %></span>
+      </h2>
+      <h2 class="flex-item">
+        Author: <span><%= locals.project.author %></span>
+      </h2>
+    </div>
+
+    <form id="mt-top" method="get" action="/projects/<%= locals.project.id %>">
+      <label for="labels">Filter by Label:</label>
+      <select id="labels" name="labels" multiple>
+        <% locals.project.labels.forEach(function(label) { %>
+        <option value="<%= label %>"><%= label %></option>
+        <% }); %>
+      </select>
+
+      <label for="author">Filter by Author:</label>
+      <input type="text" id="author" name="author" />
+
+      <label for="search">Search by Title or Description:</label>
+      <input type="text" id="search" name="search" />
+
+      <input type="submit" value="Filter/Search" />
+    </form>
+
+    <a class="f-btn" href="/projects/<%= locals.project.id %>/create-issue"
+      >Create New Issue</a
+    >
+    <h1 class="bug-heading">List of Bugs</h1>
+    <ul class="lst-li">
+      <% locals.issues.forEach(function(issue) { %>
+      <li>
+        <h3>Issue Title :<%= issue.title %></h3>
+        <p>Issue Description:<%= issue.description %></p>
+        <p>Author: <%= issue.author %></p>
+        <p>Labels: <%= issue.labels.join(', ') %></p>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
